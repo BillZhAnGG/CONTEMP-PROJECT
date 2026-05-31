@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="An academic examination of the moral obligation to prevent climate change — covering energy transitions, climatic drift, population vulnerability, and the ethics of intergenerational responsibility." />
+  <title>Climate Change - Bill Zhang</title>
+
+  <!-- Fonts: Crimson Pro (headings) + Atkinson Hyperlegible (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Design Tokens ─────────────────────────────────────────────────── */
+    :root {
+      --bg-base:        #0b0f1a;
+      --bg-surface:     #111827;
+      --bg-raised:      #1a2236;
+      --bg-card:        #1e2d45;
+
+      --accent-primary: #3b82f6;
+      --accent-hot:     #3b82f6;
+      --accent-warm:    #3b82f6;
+      --accent-cool:    #3b82f6;
+      --accent-gold:    #3b82f6;
+      --accent-violet:  #3b82f6;
+
+      --text-primary:   #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted:     #64748b;
+
+      --border-subtle:  rgba(255,255,255,0.07);
+      --border-light:   rgba(255,255,255,0.13);
+
+      --radius-sm:  6px;
+      --radius-md:  10px;
+      --radius-lg:  16px;
+
+      --font-heading: 'Crimson Pro', Georgia, serif;
+      --font-body:    'Atkinson Hyperlegible', system-ui, sans-serif;
+
+      --shadow-card: 0 4px 24px rgba(0,0,0,0.45);
+      --nav-height:  64px;
+    }
+
+    /* ─── Reset & Base ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+      font-size: 17px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    a:hover { color: #93c5fd; }
+    a:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* ─── Skip Link ──────────────────────────────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--accent-primary);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* ─── Navigation ─────────────────────────────────────────────────────── */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(11, 15, 26, 0.93);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-wordmark {
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .nav-wordmark span { color: var(--accent-primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: color 0.18s, background-color 0.18s;
+    }
+    .nav-links a:hover {
+      color: var(--text-primary);
+      background-color: rgba(255,255,255,0.06);
+    }
+    .nav-links a:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      margin-left: auto;
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 767px) {
+      .nav-toggle { display: flex; align-items: center; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0; right: 0;
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: column;
+        padding: 0.75rem 1.5rem 1rem;
+        gap: 0.25rem;
+        margin-left: 0;
+      }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 0.6rem 0.5rem; }
+    }
+
+    /* ─── Layout ─────────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    /* ─── Hero ───────────────────────────────────────────────────────────── */
+    .hero {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59,130,246,0.18) 0%, transparent 70%),
+        var(--bg-base);
+      padding: 6rem 0 5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--text-primary);
+      max-width: 820px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: #93c5fd;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-thesis {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-light);
+      border-left: 4px solid var(--accent-primary);
+      border-radius: var(--radius-md);
+      padding: 1.5rem 2rem;
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      text-align: left;
+    }
+
+    .hero-thesis .thesis-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent-primary);
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-thesis p {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .hero-thesis strong {
+      font-style: normal;
+      color: #93c5fd;
+    }
+
+    .nav-pills {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.2rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      background: var(--bg-raised);
+      transition: color 0.18s, border-color 0.18s, background-color 0.18s;
+      cursor: pointer;
+    }
+    .pill:hover        { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+    .pill.power:hover  { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+    .pill.env:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+    .pill.pop:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+    .pill.refs:hover   { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+
+    /* ─── Section Headers ────────────────────────────────────────────────── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    .label-power { color: var(--accent-primary); background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); }
+    .label-env   { color: var(--accent-primary); background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
+    .label-pop   { color: var(--accent-primary); background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* ─── Divider ────────────────────────────────────────────────────────── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border-subtle);
+      margin: 2.5rem 0;
+    }
+
+    /* ─── Stat Cards ─────────────────────────────────────────────────────── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.45rem;
+    }
+
+    .stat-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .stat-source {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* ─── Two-Column ─────────────────────────────────────────────────────── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 767px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    /* ─── Prose ──────────────────────────────────────────────────────────── */
+    .prose { color: var(--text-secondary); }
+
+    .prose h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 1.75rem 0 0.6rem;
+    }
+
+    .prose p { margin-bottom: 1rem; line-height: 1.75; }
+    .prose strong { color: var(--text-primary); font-weight: 700; }
+
+    /* ─── Standalone heading helper ──────────────────────────────────────── */
+    .sub-heading {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .sub-desc {
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+      line-height: 1.65;
+    }
+
+    /* ─── Callout ────────────────────────────────────────────────────────── */
+    .callout {
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.5rem;
+      margin: 1.75rem 0;
+      border-left-width: 4px;
+      border-left-style: solid;
+    }
+
+    .callout-blue   { background: rgba(59,130,246,0.08);  border-left-color: var(--accent-primary); }
+    .callout-green  { background: rgba(59,130,246,0.05);  border-left-color: var(--accent-primary); }
+    .callout-red    { background: rgba(59,130,246,0.05);  border-left-color: var(--accent-primary); }
+    .callout-orange { background: rgba(59,130,246,0.08);  border-left-color: var(--accent-primary); }
+
+    .callout-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .callout-blue   .callout-label { color: var(--accent-primary); }
+    .callout-green  .callout-label { color: var(--accent-primary); }
+    .callout-red    .callout-label { color: var(--accent-primary); }
+    .callout-orange .callout-label { color: var(--accent-primary); }
+
+    .callout p {
+      font-size: 0.93rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .callout strong { color: var(--text-primary); }
+
+    /* ─── Table ──────────────────────────────────────────────────────────── */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    thead { background: var(--bg-card); }
+
+    thead th {
+      padding: 0.85rem 1.1rem;
+      text-align: left;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-light);
+      white-space: nowrap;
+    }
+
+    tbody tr { background: var(--bg-raised); }
+    tbody tr:nth-child(even) { background: var(--bg-surface); }
+    tbody tr:hover { background: var(--bg-card); }
+
+    tbody td {
+      padding: 0.85rem 1.1rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+
+    tbody tr:last-child td { border-bottom: none; }
+    td strong { color: var(--text-primary); font-weight: 700; }
+
+    .td-red    { color: var(--accent-primary); font-weight: 700; }
+    .td-orange { color: var(--accent-primary); font-weight: 700; }
+    .td-green  { color: var(--accent-primary); font-weight: 700; }
+    .td-blue   { color: var(--accent-primary); font-weight: 700; }
+    .td-gold   { color: var(--accent-primary); font-weight: 700; }
+
+    /* ─── Timeline ───────────────────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      list-style: none;
+      margin: 1.75rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 22px;
+      bottom: 22px;
+      left: 21px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-warm), var(--accent-primary), var(--accent-cool));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .step-badge {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-orange { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
+    .badge-blue   { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
+    .badge-green  { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
+    .badge-gold   { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
+
+    .timeline-content { flex: 1; padding-top: 0.5rem; }
+
+    .timeline-content h4 {
+      font-family: var(--font-heading);
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .timeline-content strong { color: var(--text-primary); }
+
+    /* ─── Contrast Cards ─────────────────────────────────────────────────── */
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.75rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .contrast-grid { grid-template-columns: 1fr; }
+    }
+
+    .contrast-card {
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      border: 1px solid var(--border-light);
+    }
+
+    .contrast-card .cc-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .contrast-card h4 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .contrast-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .contrast-card strong { color: var(--text-primary); }
+
+    .cc-red  { background: rgba(59,130,246,0.06);  }
+    .cc-red  .cc-label { color: var(--accent-primary); }
+    .cc-grn  { background: rgba(59,130,246,0.04); }
+    .cc-grn  .cc-label { color: var(--accent-primary); }
+
+    /* ─── Metric Cards ───────────────────────────────────────────────────── */
+    .metric-card {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .metric-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-red    { background: rgba(59,130,246,0.15);  }
+    .icon-orange { background: rgba(59,130,246,0.15);  }
+    .icon-blue   { background: rgba(59,130,246,0.15);  }
+    .icon-green  { background: rgba(59,130,246,0.15);  }
+
+    .metric-body { flex: 1; }
+
+    .metric-number {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .metric-body h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-body p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .metric-body strong { color: var(--text-primary); }
+
+    /* ─── Ethics Box ─────────────────────────────────────────────────────── */
+    .ethics-box {
+      background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.06) 100%);
+      border: 1px solid rgba(139,92,246,0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .ethics-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-violet);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ethics-box p {
+      font-family: var(--font-heading);
+      font-size: 1.12rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.7;
+    }
+
+    .ethics-box strong { font-style: normal; color: #c4b5fd; }
+
+    /* ─── Big Quote ──────────────────────────────────────────────────────── */
+    .big-quote {
+      border-left: 4px solid var(--accent-primary);
+      padding: 0.75rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .big-quote p {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.65;
+    }
+
+    .big-quote cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* ─── References ─────────────────────────────────────────────────────── */
+    #references {
+      background: var(--bg-surface);
+      padding: 4.5rem 0;
+      border-bottom: none;
+    }
+
+    .ref-title {
+      font-family: var(--font-heading);
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .ref-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .ref-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .ref-item {
+      background: var(--bg-raised);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .ref-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.15);
+      color: var(--accent-primary);
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ref-text {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .ref-text a { color: var(--accent-primary); word-break: break-all; }
+
+    /* ─── Footer ─────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--bg-base);
+      border-top: 1px solid var(--border-subtle);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    footer strong { color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ═══ NAVIGATION ═══ -->
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-wordmark">The <span>Intergenerational</span> Ledger</a>
+
+      <button class="nav-toggle" id="navToggle"
+        aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
+      <ul class="nav-links" id="navMenu" role="list">
+        <li><a href="#power">Part I: Power</a></li>
+        <li><a href="#environment">Part II: Environment</a></li>
+        <li><a href="#population">Part III: Population</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="container">
+
+        <h1 id="hero-heading">
+          Climate Change - Bill Zhang
+        </h1>
+
+        <p class="hero-subtitle">
+          Does the current generation have a moral duty to prevent climate change that primarily impacts people not yet born? The scientific record and the principles of distributive justice converge on a decisive answer.
+        </p>
+
+        <div class="hero-thesis" role="note" aria-label="Central thesis statement">
+          <div class="thesis-label">&#9632; Central Thesis</div>
+          <p>
+            <strong>Yes.</strong> Because the greenhouse gases emitted today create a multi-century thermal imbalance that outlasts human lifespans, the living generation holds absolute, asymmetric power over the habitability of the future biosphere. Therefore, we possess a <strong>non-reciprocal moral duty</strong> to eliminate carbon emissions. Failing to do so constitutes an active choice to subsidize current industrial comfort by stripping basic safety, resources, and human rights from a completely disenfranchised future population.
+          </p>
+        </div>
+
+        <nav class="nav-pills" aria-label="Jump to section">
+          <a href="#power"       class="pill power">&#9658; Part I: Power</a>
+          <a href="#environment" class="pill env">&#9658; Part II: Environment</a>
+          <a href="#population"  class="pill pop">&#9658; Part III: Population</a>
+          <a href="#references"  class="pill refs">&#9658; References</a>
+        </nav>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- PART I: POWER                                                       -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" id="power" aria-labelledby="power-heading">
+      <div class="container">
+
+        <div class="section-label label-power">Part I</div>
+        <h2 class="section-title" id="power-heading">Power: Energy Systems &amp; Infrastructure Transitions</h2>
+        <p class="section-subtitle">
+          A structural analysis of the massive gap between current global energy trajectories and the changes required to prevent catastrophic long-term warming , with Canada's legislative framework as a concrete case study in transition law.
+        </p>
+
+        <!-- Key Stats -->
+        <div class="stat-grid" role="list" aria-label="Key energy and policy statistics">
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">2.4&#176;C</div>
+            <div class="stat-label">Median warming under "Stated Policies" (STEPS) by 2100</div>
+            <div class="stat-source">IEA World Energy Outlook</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">1.5&#176;C</div>
+            <div class="stat-label">Safe warming cap under Net Zero Emissions 2050 (NZE)</div>
+            <div class="stat-source">IEA / Paris Agreement</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">3&#215;</div>
+            <div class="stat-label">Renewable energy capacity tripling required by 2030 (NZE)</div>
+            <div class="stat-source">IEA NZE Scenario</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">40&#8211;45%</div>
+            <div class="stat-label">Canada's emissions cut target below 2005 levels by 2030</div>
+            <div class="stat-source">Government of Canada</div>
+          </div>
+        </div>
+
+        <!-- Two Pathways -->
+        <p class="sub-heading">The Global Energy Trajectory: Two Radically Different Futures</p>
+
+        <div class="contrast-grid">
+          <div class="contrast-card cc-red">
+            <div class="cc-label">Current Path , "Stated Policies" (STEPS)</div>
+            <h4>A World Locked Into 2.4&#176;C</h4>
+            <p>
+              Under current government commitments worldwide, global fossil fuel demand is projected to peak <strong>before 2030</strong>. However, this trajectory still commits the planet to an estimated <strong>2.4&#176;C median temperature rise by 2100</strong>. At this level, the scientific literature documents mass ecosystem collapse, permanent submersion of low-lying island nations, acute freshwater scarcity affecting hundreds of millions, and effective uninhabitability of equatorial regions during summer months. The STEPS scenario represents the inertia of political incrementalism , a path chosen by default, not design.
+            </p>
+          </div>
+          <div class="contrast-card cc-grn">
+            <div class="cc-label">Required Path , Net Zero Emissions by 2050 (NZE)</div>
+            <h4>Capping Warming Safely Under 1.5&#176;C</h4>
+            <p>
+              The IEA's "Net Zero Emissions by 2050" scenario defines the narrow physical corridor required to preserve a habitable climate baseline. It demands that <strong>global renewable energy capacity triple by 2030</strong> and that <strong>energy efficiency rates double</strong> within that same window. Every year of delayed action narrows this corridor further, as unabated emissions permanently accumulate in the atmosphere. The NZE pathway requires unprecedented political will and capital mobilization, but the physics are achievable.
+            </p>
+          </div>
+        </div>
+
+        <div class="callout callout-orange">
+          <div class="callout-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            IEA Key Finding
+          </div>
+          <p>
+            <strong>The gap between STEPS and NZE is not a matter of scale , it is a matter of civilizational outcome.</strong> The difference between 1.5&#176;C and 2.4&#176;C of warming translates into hundreds of millions of additional people exposed to life-threatening heat stress, coastal flooding, and food insecurity by the end of this century. The choice between these pathways is, at its core, a moral decision made by the present generation on behalf of all future ones.
+          </p>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Canada Case Study: Timeline -->
+        <p class="sub-heading">Case Study: Canada's Legislative Framework for a Clean Energy Transition</p>
+        <p class="sub-desc">
+          Canada offers one of the most instructive models of how an industrialized, fossil-fuel-dependent economy can legally bind itself to a net-zero trajectory using domestic statute. The following five-stage framework, anchored in the <em>Net-Zero Emissions Accountability Act</em>, demonstrates how policy, law, and accountability mechanisms can be integrated into a coherent transition architecture.
+        </p>
+
+        <ol class="timeline" aria-label="Canada's clean energy transition framework: five steps">
+
+          <li class="timeline-item">
+            <div class="step-badge badge-orange" aria-label="Step 1">1</div>
+            <div class="timeline-content">
+              <h4>Statutory Obligation: The Net-Zero Emissions Accountability Act</h4>
+              <p>
+                Canada codified its climate ambition into domestic law through the <em>Net-Zero Emissions Accountability Act (NZEAA)</em>. This legislation transforms political pledges into enforceable legal obligations, binding successive governments to the overarching goal of achieving <strong>net-zero greenhouse gas emissions by 2050</strong>. By embedding the target in statute rather than policy, the NZEAA makes it significantly more difficult for future administrations to abandon the commitment , a critical structural safeguard against political short-termism.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="step-badge badge-blue" aria-label="Step 2">2</div>
+            <div class="timeline-content">
+              <h4>Rolling 5-Year Interim Targets with Legal Accountability</h4>
+              <p>
+                Rather than relying on a single distant deadline, Canada's framework mandates <strong>rolling 5-year interim emissions reduction milestones</strong>. Each milestone requires the government to publicly set, monitor, and report on progress , creating a cadence of accountability that mirrors the IPCC's own assessment cycle. This phased approach compels continuous structural adjustment rather than allowing the bulk of transformation to be deferred to the eleventh hour.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="step-badge badge-gold" aria-label="Step 3">3</div>
+            <div class="timeline-content">
+              <h4>The 2030 Milestone: 40&#8211;45% Below 2005 Emission Levels</h4>
+              <p>
+                Canada's most critical near-term target requires the country to reduce its total greenhouse gas emissions by <strong>40% to 45% below 2005 levels by 2030</strong>. This milestone spans all major emitting sectors: oil and gas, transportation, electricity generation, heavy industry, buildings, and agriculture , representing the emissions budget required to keep Canada's contribution on a trajectory consistent with the Paris Agreement's 1.5&#176;C temperature ceiling.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="step-badge badge-green" aria-label="Step 4">4</div>
+            <div class="timeline-content">
+              <h4>Sectoral Transition: Clean Electricity and Industrial Decarbonization</h4>
+              <p>
+                Canada's plan mandates the transition of its electricity grid to <strong>net-zero emissions by 2035</strong> , one of the most ambitious clean-grid timelines in the G7. Large industrial emitters operate under a carbon price mechanism creating persistent financial pressure to adopt cleaner technologies. Clean fuel standards, building retrofit programs, and a zero-emission vehicle sales mandate form the complementary architecture of the sectoral transition strategy.
+              </p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="step-badge badge-orange" aria-label="Step 5">5</div>
+            <div class="timeline-content">
+              <h4>Independent Oversight and Transparent Public Reporting</h4>
+              <p>
+                The NZEAA established the <strong>Net-Zero Advisory Body</strong> , an independent expert panel charged with advising the government on achieving net-zero and reviewing emission reduction plans free from ministerial interference. The government is legally required to publish detailed emissions reduction plans and progress reports, ensuring Parliament and the Canadian public hold a direct, transparent view of whether the nation is meeting its obligations.
+              </p>
+            </div>
+          </li>
+
+        </ol>
+
+        <!-- Ethical Tie-In -->
+        <div class="ethics-box">
+          <div class="ethics-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Ethical Dimension , Intergenerational Obligation
+          </div>
+          <p>
+            Energy infrastructures built today lock in carbon emissions for <strong>decades or longer</strong>. A natural gas power plant commissioned in 2026 will typically operate for 30 to 40 years, releasing greenhouse gases throughout its operational life. Choosing slow transitions is not a neutral act of delay , it is an active decision to <strong>force future generations to inherit a broken climate baseline they had no hand in building</strong> and no vote in choosing. The moral asymmetry is absolute: the present generation bears the cost of transition, while future generations bear the full consequence of inaction.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- PART II: ENVIRONMENT                                                -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" id="environment" aria-labelledby="env-heading">
+      <div class="container">
+
+        <div class="section-label label-env">Part II</div>
+        <h2 class="section-title" id="env-heading">Environment: Climatic Drift &amp; Ecological Disruption</h2>
+        <p class="section-subtitle">
+          Mapping the accelerating physics of global warming , how thermal energy accumulates permanently in the biosphere, and why the warming we observe today is unlike any period in the modern human record.
+        </p>
+
+        <!-- Two-column explainer -->
+        <div class="two-col">
+          <div class="prose">
+            <h3>Earth's Fundamental Energy Imbalance</h3>
+            <p>
+              The climate system is governed by a basic physical ledger: energy arriving from the sun must equal energy radiating back into space for the planet's temperature to remain stable. Accumulated greenhouse gases , principally carbon dioxide (CO&#8322;), methane (CH&#8324;), and nitrous oxide (N&#8322;O) , <strong>block outward-bound thermal (infrared) radiation</strong>, preventing it from escaping to space. The result is a planetary energy imbalance: more energy enters the Earth system than leaves it, and that surplus accumulates in the oceans, atmosphere, ice sheets, and land surface.
+            </p>
+            <p>
+              Carbon dioxide , the dominant driver of anthropogenic warming , <strong>persists in the atmosphere for centuries to millennia</strong>. A CO&#8322; molecule emitted by a coal-fired power station today will still be trapping heat in the year 2300. This irreversibility is the physical foundation of the moral argument: we are not merely creating problems for the next election cycle, but encoding constraints into the climate system that will shape human civilization for hundreds of generations.
+            </p>
+          </div>
+          <div>
+            <div class="callout callout-green">
+              <div class="callout-label">NOAA / United Nations , Key Physical Mechanism</div>
+              <p>
+                The greenhouse effect is a natural process; without it, Earth's average surface temperature would be approximately <strong>&#8722;18&#176;C</strong> rather than the current +15&#176;C. The crisis is not its existence but its intensification: human activities have elevated atmospheric CO&#8322; from a pre-industrial baseline of approximately <strong>280 ppm</strong> to over <strong>420 ppm</strong> as of 2024 , a concentration not seen on Earth for at least <strong>3 million years</strong>.
+              </p>
+            </div>
+            <div class="callout callout-blue" style="margin-top:1.25rem;">
+              <div class="callout-label">Physical Persistence , The Century-Scale Lock-In</div>
+              <p>
+                Even if humanity achieved <strong>net-zero emissions tomorrow</strong>, the CO&#8322; already present in the atmosphere would continue warming the planet for centuries due to the slow response time of the deep ocean. We are living in the consequences of our grandparents' industrial choices , and our grandchildren will live in the consequences of ours.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Acceleration Table -->
+        <p class="sub-heading">The Acceleration of Global Surface Warming</p>
+        <p class="sub-desc">
+          The following multi-variable table contrasts historical warming baselines against modern acceleration indicators, synthesizing data from NOAA's global land-ocean temperature dataset. All anomaly values are measured relative to the 20th-century average.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Global surface warming acceleration data table">
+            <thead>
+              <tr>
+                <th scope="col">Time Period / Metric</th>
+                <th scope="col">Warming Rate or Value</th>
+                <th scope="col">Reference Baseline</th>
+                <th scope="col">Significance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Long-term average warming rate</strong><br/>1850&#8211;present</td>
+                <td class="td-gold">+0.11&#176;F (+0.06&#176;C)<br/>per decade</td>
+                <td>20th-century average surface temperature</td>
+                <td>Establishes the pre-acceleration baseline rate of anthropogenic warming across the full instrumental record</td>
+              </tr>
+              <tr>
+                <td><strong>Accelerated warming rate</strong><br/>1975&#8211;present</td>
+                <td class="td-orange">+0.36&#176;F (+0.20&#176;C)<br/>per decade</td>
+                <td>Same 20th-century baseline</td>
+                <td>Rate has <strong>more than tripled</strong> since 1975 , coinciding with the rapid post-1970s industrialization of emerging economies and the failure of early policy responses to constrain emissions</td>
+              </tr>
+              <tr>
+                <td><strong>2024 Annual Temperature Anomaly</strong></td>
+                <td class="td-red">+2.43&#176;F (+1.35&#176;C)<br/>above 20th-century average</td>
+                <td>Global land and ocean combined</td>
+                <td>The <strong>single largest annual temperature anomaly</strong> ever recorded in the modern instrumental period; crosses critical scientific and political threshold</td>
+              </tr>
+              <tr>
+                <td><strong>Hottest decade on record</strong><br/>2015&#8211;2024</td>
+                <td class="td-red">Confirmed hottest 10-year block in human history</td>
+                <td>Full instrumental record (1850&#8211;present)</td>
+                <td>Every year from 2015&#8211;2024 ranks among the ten hottest ever recorded. The trend is unambiguous and accelerating.</td>
+              </tr>
+              <tr>
+                <td><strong>Rate multiplication factor</strong><br/>1850&#8594;1975&#8594;present</td>
+                <td class="td-orange">&gt;3&#215; acceleration<br/>post-1975</td>
+                <td>Ratio of 1975&#8211;present rate to 1850&#8211;present rate</td>
+                <td>Warming is not linear; it is accelerating. The system is responding non-linearly to accumulated forcing, raising the risk of triggering irreversible tipping points</td>
+              </tr>
+              <tr>
+                <td><strong>Atmospheric CO&#8322; concentration</strong><br/>2024</td>
+                <td class="td-red">&gt;420 ppm</td>
+                <td>Pre-industrial baseline: ~280 ppm (year 1750)</td>
+                <td>A 50% increase in the primary forcing agent over 274 years; no geological precedent within the period of human civilization (the last ~12,000 years)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.4rem;">
+          Sources: Lindsey &amp; Dahlman (2025), NOAA Climate.gov; United Nations Climate Action (n.d.).
+        </p>
+
+        <hr class="divider" />
+
+        <div class="big-quote">
+          <p>
+            "The 2024 global surface temperature anomaly of <strong>+2.43&#176;F (1.35&#176;C)</strong> above the 20th-century average is not a statistical outlier , it is the latest point on a curve that has been rising without interruption for over a century. The 2015&#8211;2024 period is the hottest decade in the history of human civilization."
+          </p>
+          <cite>Adapted from Lindsey &amp; Dahlman (2025), NOAA Climate.gov , <em>Climate Change: Global Temperature</em></cite>
+        </div>
+
+        <!-- Ecological cascade -->
+        <div class="prose" style="margin-top:1.75rem;">
+          <h3>From Temperature Rise to Ecological Cascade</h3>
+          <p>
+            Global mean temperature rise is not an isolated metric , it is the input variable that drives cascading disruptions across every major Earth system. <strong>Rising ocean temperatures</strong> accelerate the bleaching and death of coral reef ecosystems, which support an estimated 25% of all marine species. <strong>Melting polar ice sheets</strong> contribute to sea-level rise while disrupting thermohaline circulation patterns that regulate temperature and precipitation across entire continents.
+          </p>
+          <p>
+            On land, accelerating warming is <strong>shifting species ranges poleward and to higher elevations</strong> faster than many organisms can adapt. Phenological mismatches , the desynchronization of plant flowering and insect pollination cycles , threaten agricultural systems that depend on millennia of evolved ecological timing. Permafrost thaw in the Arctic releases additional methane and CO&#8322;, creating a dangerous feedback loop that amplifies warming independent of further human emissions.
+          </p>
+          <p>
+            Extreme weather events , including <strong>marine heatwaves, atmospheric rivers, compound drought-heat events, and super-typhoons</strong> , are becoming more frequent and more intense as the atmosphere holds greater energy and moisture. The physical chain from a ton of CO&#8322; emitted today to a flooded coastal city in 2080 is mechanistically traceable and scientifically established.
+          </p>
+        </div>
+
+        <div class="ethics-box">
+          <div class="ethics-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Ethical Dimension , Irreversible Planetary Debt
+          </div>
+          <p>
+            Greenhouse gases like carbon dioxide remain active in the atmosphere for <strong>centuries to millennia</strong>. The environmental degradation we inflict today is therefore not a temporary disruption from which future generations can recover , it is an <strong>irreversible planetary debt handed down directly to the unborn</strong>. Unlike financial debt, which can be restructured or forgiven, a CO&#8322;-enriched atmosphere cannot be rapidly recalled. We have no capacity to apologize to future generations for a liveable climate after we have destroyed it.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- PART III: POPULATION                                               -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <section class="section" id="population" aria-labelledby="pop-heading">
+      <div class="container">
+
+        <div class="section-label label-pop">Part III</div>
+        <h2 class="section-title" id="pop-heading">Population: Vulnerability, Health, &amp; Equity</h2>
+        <p class="section-subtitle">
+          Climate impacts do not fall equally on those who cause them. The starkest moral indictment of the current trajectory is the extreme disparity between those who drive emissions and those who suffer their most severe consequences.
+        </p>
+
+        <!-- Key Stats -->
+        <div class="stat-grid" role="list" aria-label="Key vulnerability and equity statistics">
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">68%</div>
+            <div class="stat-label">Of all global greenhouse gases generated by just the top 10 emitting nations</div>
+            <div class="stat-source">IPCC AR6 WGII</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">3.3&#8211;3.6B</div>
+            <div class="stat-label">People currently in settings highly vulnerable to climate disruption</div>
+            <div class="stat-source">IPCC Sixth Assessment Report</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">15&#215;</div>
+            <div class="stat-label">Higher mortality rate from climate hazards in vulnerable vs. resilient nations</div>
+            <div class="stat-source">IPCC AR6 WGII</div>
+          </div>
+          <div class="stat-card" role="listitem">
+            <div class="stat-value" style="color:var(--accent-primary);">0%</div>
+            <div class="stat-label">Representation of future generations in any current political or legislative body</div>
+            <div class="stat-source">Analytical observation</div>
+          </div>
+        </div>
+
+        <!-- Core inequity -->
+        <p class="sub-heading">The Emissions&#8211;Impact Inversion: Those Who Cause the Least, Suffer the Most</p>
+
+        <div class="prose">
+          <p>
+            The geopolitical anatomy of climate change reveals one of the most severe examples of distributive injustice in human history. The <strong>top 10 carbon-emitting nations</strong> , principally the world's largest industrialized and rapidly industrializing economies , collectively generate a staggering <strong>68% of all global greenhouse gas emissions</strong>. These same nations also possess the greatest financial, technological, and infrastructural capacity to adapt to climate impacts.
+          </p>
+          <p>
+            At the other end of the spectrum, the nations that have historically contributed the <strong>absolute least</strong> to cumulative global emissions , small island developing states, sub-Saharan African nations, South and Southeast Asian coastal communities , face the most catastrophic and near-term consequences: permanent inundation from sea-level rise, collapse of subsistence agriculture from shifting monsoon patterns, and the loss of freshwater sources from glacial retreat. The cruel inverse relationship between contribution and consequence is a structural feature of how colonial-era industrialization encoded carbon into the global economy.
+          </p>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Vulnerability Metric Cards -->
+        <p class="sub-heading" style="margin-bottom:1.25rem;">The Human Cost: Key Vulnerability Metrics</p>
+
+        <div class="metric-card" role="article" aria-label="Human vulnerability metric: 3.3–3.6 billion people">
+          <div class="metric-icon icon-orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="var(--accent-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-number" style="color:var(--accent-primary);">3.3&#8211;3.6 Billion People</div>
+            <h4>Highly Vulnerable Human Populations</h4>
+            <p>
+              According to the IPCC Sixth Assessment Report (Working Group II), between <strong>3.3 and 3.6 billion people</strong> currently live in settings that are "highly vulnerable" to climate disruptions , communities with limited adaptive capacity facing high levels of climate exposure. This encompasses populations threatened by sea-level rise, desertification, loss of glacial meltwater, intensifying tropical cyclones, and heat-induced agricultural failure. This is not a future risk , it is a present-tense crisis affecting nearly half the global population.
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-card" role="article" aria-label="Mortality disparity metric: 15x higher rate">
+          <div class="metric-icon icon-red">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="var(--accent-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-number" style="color:var(--accent-primary);">15&#215; Higher Mortality Rate</div>
+            <h4>The Mortality Disparity: Vulnerability vs. Resilience</h4>
+            <p>
+              The IPCC's Sixth Assessment Report documents that people living in highly vulnerable, developing nations , who historically contributed the absolute least to global cumulative emissions , face a <strong>15-times higher mortality rate</strong> from climate-induced floods, droughts, and severe storms compared to populations in climate-resilient, high-income nations. This 15-fold disparity is not explained by geographic bad luck; it is a product of accumulated deficits in infrastructure, early-warning systems, healthcare, and financial safety nets , themselves a legacy of the unequal global development model powered by the very carbon emissions that now threaten those left furthest behind.
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-card" role="article" aria-label="Disease cascade metric">
+          <div class="metric-icon icon-blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="var(--accent-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-number" style="color:var(--accent-primary);">Escalating Disease Risk</div>
+            <h4>Eco-Socio Cascades: Vector-Borne and Zoonotic Disease</h4>
+            <p>
+              Rising global temperatures and accelerating habitat loss are systematically <strong>breaking down the ecological boundaries</strong> that historically constrained the geographic range of disease vectors. As tropical climate zones expand poleward, diseases such as malaria, dengue fever, chikungunya, Zika, and Lyme disease are establishing themselves in previously untouched human populations lacking any prior immunity or healthcare infrastructure for these conditions. Simultaneously, the destruction of natural habitats <strong>increases contact between wildlife reservoirs and human populations</strong>, creating ideal conditions for zoonotic pathogen spillover events , the same mechanism underlying recent pandemic outbreaks. Climate change does not merely increase existing health risks; it actively generates new ones.
+            </p>
+          </div>
+        </div>
+
+        <div class="metric-card" role="article" aria-label="Future generations representation metric">
+          <div class="metric-icon icon-green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="var(--accent-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="metric-body">
+            <div class="metric-number" style="color:var(--accent-primary);">Zero Representation</div>
+            <h4>The Unborn: A Fully Disenfranchised Constituency</h4>
+            <p>
+              Future generations , those who will live with the full thermal consequences of decisions made in 2026 , have <strong>no vote, no legal standing, no lobbyist, and no seat at any table</strong> where climate policy is decided. They cannot object to our emissions, cannot organize political resistance, and cannot sue for the rights we are preemptively stripping from them. This represents a unique form of exploitation: the expropriation of a resource , a stable climate , from those who cannot yet defend their claim to it. Democratic systems, designed to represent the living, have no intrinsic mechanism for this representation gap. Filling it requires the present generation to voluntarily assume the moral obligation that institutional structures cannot enforce.
+            </p>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <!-- Comparative Table -->
+        <p class="sub-heading">The Asymmetry of Cause and Consequence</p>
+        <p class="sub-desc">
+          The table below illustrates the fundamental inequity between nations and communities most responsible for greenhouse gas accumulation and those bearing the most severe consequences.
+        </p>
+
+        <div class="table-wrapper">
+          <table aria-label="Emissions responsibility versus climate impact vulnerability by group">
+            <thead>
+              <tr>
+                <th scope="col">Group</th>
+                <th scope="col">Emissions Responsibility</th>
+                <th scope="col">Climate Impact Exposure</th>
+                <th scope="col">Adaptive Capacity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Top 10 Industrial Emitters</strong><br/>(e.g., China, USA, EU, India, Russia)</td>
+                <td class="td-red">Generate ~68% of global greenhouse gas emissions</td>
+                <td>Significant but managed , wealth and infrastructure provide substantial buffers</td>
+                <td class="td-green">Very High , advanced early-warning, disaster response, healthcare, and financial systems</td>
+              </tr>
+              <tr>
+                <td><strong>Small Island Developing States</strong><br/>(e.g., Tuvalu, Maldives, Kiribati)</td>
+                <td class="td-green">Negligible , collectively less than 1% of global emissions</td>
+                <td class="td-red">Existential , entire nations face permanent inundation by 2100 under current trajectories</td>
+                <td class="td-red">Near-Zero , no capacity for managed coastal retreat or large-scale infrastructure protection</td>
+              </tr>
+              <tr>
+                <td><strong>Sub-Saharan Africa</strong></td>
+                <td class="td-green">~3&#8211;4% of global cumulative historical emissions</td>
+                <td class="td-red">Severe , crop yield losses, desertification, water stress, vector-borne disease expansion</td>
+                <td class="td-orange">Low , high dependence on climate-sensitive agriculture; limited public health infrastructure</td>
+              </tr>
+              <tr>
+                <td><strong>South &amp; Southeast Asian Coastal Communities</strong></td>
+                <td>Moderate per-capita; historically low cumulative share</td>
+                <td class="td-red">Extreme , densely populated delta regions face flooding, cyclone intensification, saline intrusion</td>
+                <td class="td-orange">Low-to-Moderate , improving but insufficient for projected hazard scales</td>
+              </tr>
+              <tr>
+                <td><strong>Future Generations</strong><br/>(Born post-2040)</td>
+                <td class="td-green">Zero , no historical emissions responsibility whatsoever</td>
+                <td class="td-red">Highest of any group , will inherit the full compounded thermal consequences of all prior emissions</td>
+                <td class="td-red">Determined entirely by decisions made now , they have no agency in the present</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.4rem;">
+          Sources: IPCC (2022), Sixth Assessment Report WGII; United Nations Climate Action (n.d.); Government of Canada (2024).
+        </p>
+
+        <div class="ethics-box">
+          <div class="ethics-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            Ethical Dimension , Distributive Justice and Universal Human Rights
+          </div>
+          <p>
+            Future generations are <strong>entirely powerless</strong>: they cannot vote, lobby, litigate, or protect themselves from our choices. Exploiting this absence of representation to preserve short-term industrial comfort violates the core principles of both <strong>universal human rights</strong> , which are by definition not time-limited to the presently living , and <strong>distributive justice</strong>, which demands that burdens and benefits be allocated according to capacity and contribution, not arbitrary temporal position. We do not grant ourselves the right to poison a river simply because those who will drink from it downstream have not yet been born. The same principle, writ planetary, applies to the atmosphere.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- REFERENCES                                                          -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <section id="references" aria-labelledby="ref-heading">
+    <div class="container">
+      <h2 class="ref-title" id="ref-heading">References</h2>
+      <p class="ref-subtitle">Formatted in APA 7th Edition. All sources verified as of May 31, 2026.</p>
+
+      <ol class="ref-list" aria-label="Bibliography in APA 7th edition format">
+
+        <li class="ref-item">
+          <div class="ref-num" aria-label="Reference 1">1</div>
+          <p class="ref-text">
+            Government of Canada. (2024, September 3). <em>Net-zero emissions by 2050</em>. <a href="https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/net-zero-emissions-2050.html" target="_blank" rel="noopener noreferrer">https://www.canada.ca/en/services/environment/weather/climatechange/climate-plan/net-zero-emissions-2050.html</a>
+          </p>
+        </li>
+
+        <li class="ref-item">
+          <div class="ref-num" aria-label="Reference 2">2</div>
+          <p class="ref-text">
+            Intergovernmental Panel on Climate Change. (2022). <em>Climate change 2022: Impacts, adaptation and vulnerability</em>. Working Group II contribution to the sixth assessment report of the Intergovernmental Panel on Climate Change. Cambridge University Press. <a href="https://www.ipcc.ch/report/ar6/wg2/" target="_blank" rel="noopener noreferrer">https://www.ipcc.ch/report/ar6/wg2/</a>
+          </p>
+        </li>
+
+        <li class="ref-item">
+          <div class="ref-num" aria-label="Reference 3">3</div>
+          <p class="ref-text">
+            International Energy Agency. (2025, November). <em>World energy outlook 2025</em>. IEA Publications. <a href="https://www.iea.org/reports/world-energy-outlook-2025" target="_blank" rel="noopener noreferrer">https://www.iea.org/reports/world-energy-outlook-2025</a>
+          </p>
+        </li>
+
+        <li class="ref-item">
+          <div class="ref-num" aria-label="Reference 4">4</div>
+          <p class="ref-text">
+            Lindsey, R., &amp; Dahlman, L. (2025, May 29). <em>Climate change: Global temperature</em>. NOAA Climate.gov. <a href="https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature" target="_blank" rel="noopener noreferrer">https://www.climate.gov/news-features/understanding-climate/climate-change-global-temperature</a>
+          </p>
+        </li>
+
+        <li class="ref-item">
+          <div class="ref-num" aria-label="Reference 5">5</div>
+          <p class="ref-text">
+            United Nations. (n.d.). <em>What is climate change?</em> United Nations Climate Action. Retrieved May 31, 2026, from <a href="https://www.un.org/en/climatechange/what-is-climate-change" target="_blank" rel="noopener noreferrer">https://www.un.org/en/climatechange/what-is-climate-change</a>
+          </p>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <p>
+        <strong>The Intergenerational Ledger</strong> , Climate Metrics, Moral Obligations, and the Path to Net-Zero
+      </p>
+      <p style="margin-top:0.4rem;">
+        Content synthesized from NOAA, IPCC AR6, IEA World Energy Outlook, Government of Canada, and United Nations Climate Action.
+        All data as cited in the References section above.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Mobile Nav Script -->
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var menu   = document.getElementById('navMenu');
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', function () {
+        var isOpen = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove('is-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }());
+  </script>
+
+</body>
+</html>
