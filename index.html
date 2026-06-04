@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="An academic examination of the moral obligation to prevent climate change — covering energy transitions, climatic drift, population vulnerability, and the ethics of intergenerational responsibility." />
+  <meta name="description" content="An academic examination of the moral obligation to prevent climate change , covering energy transitions, climatic drift, population vulnerability, and the ethics of intergenerational responsibility." />
   <title>Climate Change - Bill Zhang</title>
 
   <!-- Fonts: Crimson Pro (headings) + Atkinson Hyperlegible (body) -->
@@ -520,69 +520,45 @@
     .td-blue   { color: var(--accent-primary); font-weight: 700; }
     .td-gold   { color: var(--accent-primary); font-weight: 700; }
 
-    /* ─── Timeline ───────────────────────────────────────────────────────── */
-    .timeline {
-      position: relative;
+    /* ─── Bullet List ────────────────────────────────────────────────────── */
+    .bullet-list {
       list-style: none;
       margin: 1.75rem 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 22px;
-      bottom: 22px;
-      left: 21px;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--accent-warm), var(--accent-primary), var(--accent-cool));
-      border-radius: 2px;
-    }
-
-    .timeline-item {
       display: flex;
-      gap: 1.25rem;
-      margin-bottom: 1.5rem;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: 1rem;
       align-items: flex-start;
     }
 
-    .timeline-item:last-child { margin-bottom: 0; }
-
-    .step-badge {
+    .bullet-dot {
       flex-shrink: 0;
-      width: 44px;
-      height: 44px;
+      margin-top: 0.45rem;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      position: relative;
-      z-index: 1;
+      background: var(--accent-primary);
     }
 
-    .badge-orange { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
-    .badge-blue   { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
-    .badge-green  { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
-    .badge-gold   { background: rgba(59,130,246,0.2); color: var(--accent-primary); border: 2px solid rgba(59,130,246,0.4); }
-
-    .timeline-content { flex: 1; padding-top: 0.5rem; }
-
-    .timeline-content h4 {
+    .bullet-item h4 {
       font-family: var(--font-heading);
-      font-size: 1.12rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.25rem;
     }
 
-    .timeline-content p {
+    .bullet-item p {
       font-size: 0.9rem;
       color: var(--text-secondary);
       line-height: 1.65;
     }
 
-    .timeline-content strong { color: var(--text-primary); }
+    .bullet-item strong { color: var(--text-primary); }
 
     /* ─── Contrast Cards ─────────────────────────────────────────────────── */
     .contrast-grid {
@@ -881,7 +857,7 @@
         <div class="section-label label-power">Part I</div>
         <h2 class="section-title" id="power-heading">Power: Energy Systems &amp; Infrastructure Transitions</h2>
         <p class="section-subtitle">
-          A structural analysis of the massive gap between current global energy trajectories and the changes required to prevent catastrophic long-term warming , with Canada's legislative framework as a concrete case study in transition law.
+          The gap between current energy trajectories and what is required to prevent catastrophic warming , with Canada's legislative framework as a case study.
         </p>
 
         <!-- Key Stats -->
@@ -916,26 +892,16 @@
             <div class="cc-label">Current Path , "Stated Policies" (STEPS)</div>
             <h4>A World Locked Into 2.4&#176;C</h4>
             <p>
-              Under current government commitments worldwide, global fossil fuel demand is projected to peak <strong>before 2030</strong>. However, this trajectory still commits the planet to an estimated <strong>2.4&#176;C median temperature rise by 2100</strong>. At this level, the scientific literature documents mass ecosystem collapse, permanent submersion of low-lying island nations, acute freshwater scarcity affecting hundreds of millions, and effective uninhabitability of equatorial regions during summer months. The STEPS scenario represents the inertia of political incrementalism , a path chosen by default, not design.
+              Current commitments project fossil fuel demand peaking <strong>before 2030</strong>, but still lock in an estimated <strong>2.4&#176;C rise by 2100</strong> , bringing ecosystem collapse, island submersion, and acute freshwater scarcity. A path chosen by default, not design.
             </p>
           </div>
           <div class="contrast-card cc-grn">
             <div class="cc-label">Required Path , Net Zero Emissions by 2050 (NZE)</div>
             <h4>Capping Warming Safely Under 1.5&#176;C</h4>
             <p>
-              The IEA's "Net Zero Emissions by 2050" scenario defines the narrow physical corridor required to preserve a habitable climate baseline. It demands that <strong>global renewable energy capacity triple by 2030</strong> and that <strong>energy efficiency rates double</strong> within that same window. Every year of delayed action narrows this corridor further, as unabated emissions permanently accumulate in the atmosphere. The NZE pathway requires unprecedented political will and capital mobilization, but the physics are achievable.
+              The NZE pathway requires <strong>renewable capacity to triple</strong> and <strong>efficiency rates to double</strong> by 2030. Every year of delay narrows the corridor as emissions accumulate. Politically demanding , but physically achievable.
             </p>
           </div>
-        </div>
-
-        <div class="callout callout-orange">
-          <div class="callout-label">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            IEA Key Finding
-          </div>
-          <p>
-            <strong>The gap between STEPS and NZE is not a matter of scale , it is a matter of civilizational outcome.</strong> The difference between 1.5&#176;C and 2.4&#176;C of warming translates into hundreds of millions of additional people exposed to life-threatening heat stress, coastal flooding, and food insecurity by the end of this century. The choice between these pathways is, at its core, a moral decision made by the present generation on behalf of all future ones.
-          </p>
         </div>
 
         <hr class="divider" />
@@ -943,77 +909,63 @@
         <!-- Canada Case Study: Timeline -->
         <p class="sub-heading">Case Study: Canada's Legislative Framework for a Clean Energy Transition</p>
         <p class="sub-desc">
-          Canada offers one of the most instructive models of how an industrialized, fossil-fuel-dependent economy can legally bind itself to a net-zero trajectory using domestic statute. The following five-stage framework, anchored in the <em>Net-Zero Emissions Accountability Act</em>, demonstrates how policy, law, and accountability mechanisms can be integrated into a coherent transition architecture.
+          Canada's <em>Net-Zero Emissions Accountability Act</em> shows how a fossil-fuel-dependent economy can legally bind itself to net-zero , integrating policy, law, and accountability into a coherent transition framework.
         </p>
 
-        <ol class="timeline" aria-label="Canada's clean energy transition framework: five steps">
+        <ul class="bullet-list" aria-label="Canada's clean energy transition framework">
 
-          <li class="timeline-item">
-            <div class="step-badge badge-orange" aria-label="Step 1">1</div>
-            <div class="timeline-content">
+          <li class="bullet-item">
+            <div class="bullet-dot" aria-hidden="true"></div>
+            <div>
               <h4>Statutory Obligation: The Net-Zero Emissions Accountability Act</h4>
               <p>
-                Canada codified its climate ambition into domestic law through the <em>Net-Zero Emissions Accountability Act (NZEAA)</em>. This legislation transforms political pledges into enforceable legal obligations, binding successive governments to the overarching goal of achieving <strong>net-zero greenhouse gas emissions by 2050</strong>. By embedding the target in statute rather than policy, the NZEAA makes it significantly more difficult for future administrations to abandon the commitment , a critical structural safeguard against political short-termism.
+                The <em>NZEAA</em> transforms political pledges into enforceable law, binding all successive governments to <strong>net-zero by 2050</strong> , making abandonment far harder than a policy reversal.
               </p>
             </div>
           </li>
 
-          <li class="timeline-item">
-            <div class="step-badge badge-blue" aria-label="Step 2">2</div>
-            <div class="timeline-content">
+          <li class="bullet-item">
+            <div class="bullet-dot" aria-hidden="true"></div>
+            <div>
               <h4>Rolling 5-Year Interim Targets with Legal Accountability</h4>
               <p>
-                Rather than relying on a single distant deadline, Canada's framework mandates <strong>rolling 5-year interim emissions reduction milestones</strong>. Each milestone requires the government to publicly set, monitor, and report on progress , creating a cadence of accountability that mirrors the IPCC's own assessment cycle. This phased approach compels continuous structural adjustment rather than allowing the bulk of transformation to be deferred to the eleventh hour.
+                Legally mandated <strong>5-year milestones</strong> require the government to publicly set, monitor, and report targets , compelling continuous adjustment rather than last-minute action.
               </p>
             </div>
           </li>
 
-          <li class="timeline-item">
-            <div class="step-badge badge-gold" aria-label="Step 3">3</div>
-            <div class="timeline-content">
+          <li class="bullet-item">
+            <div class="bullet-dot" aria-hidden="true"></div>
+            <div>
               <h4>The 2030 Milestone: 40&#8211;45% Below 2005 Emission Levels</h4>
               <p>
-                Canada's most critical near-term target requires the country to reduce its total greenhouse gas emissions by <strong>40% to 45% below 2005 levels by 2030</strong>. This milestone spans all major emitting sectors: oil and gas, transportation, electricity generation, heavy industry, buildings, and agriculture , representing the emissions budget required to keep Canada's contribution on a trajectory consistent with the Paris Agreement's 1.5&#176;C temperature ceiling.
+                Canada must cut emissions <strong>40–45% below 2005 levels by 2030</strong>, spanning oil and gas, transport, electricity, industry, buildings, and agriculture , the budget needed to stay within 1.5&#176;C.
               </p>
             </div>
           </li>
 
-          <li class="timeline-item">
-            <div class="step-badge badge-green" aria-label="Step 4">4</div>
-            <div class="timeline-content">
+          <li class="bullet-item">
+            <div class="bullet-dot" aria-hidden="true"></div>
+            <div>
               <h4>Sectoral Transition: Clean Electricity and Industrial Decarbonization</h4>
               <p>
-                Canada's plan mandates the transition of its electricity grid to <strong>net-zero emissions by 2035</strong> , one of the most ambitious clean-grid timelines in the G7. Large industrial emitters operate under a carbon price mechanism creating persistent financial pressure to adopt cleaner technologies. Clean fuel standards, building retrofit programs, and a zero-emission vehicle sales mandate form the complementary architecture of the sectoral transition strategy.
+                The grid must reach <strong>net-zero by 2035</strong> , among the G7's most ambitious targets. Carbon pricing, clean fuel standards, building retrofits, and a zero-emission vehicle mandate complete the sectoral picture.
               </p>
             </div>
           </li>
 
-          <li class="timeline-item">
-            <div class="step-badge badge-orange" aria-label="Step 5">5</div>
-            <div class="timeline-content">
+          <li class="bullet-item">
+            <div class="bullet-dot" aria-hidden="true"></div>
+            <div>
               <h4>Independent Oversight and Transparent Public Reporting</h4>
               <p>
-                The NZEAA established the <strong>Net-Zero Advisory Body</strong> , an independent expert panel charged with advising the government on achieving net-zero and reviewing emission reduction plans free from ministerial interference. The government is legally required to publish detailed emissions reduction plans and progress reports, ensuring Parliament and the Canadian public hold a direct, transparent view of whether the nation is meeting its obligations.
+                The <strong>Net-Zero Advisory Body</strong> , an independent expert panel , reviews plans free from ministerial interference. Legally required progress reports keep Parliament and the public informed.
               </p>
             </div>
           </li>
 
-        </ol>
+        </ul>
 
-        <!-- Ethical Tie-In -->
-        <div class="ethics-box">
-          <div class="ethics-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-            Ethical Dimension , Intergenerational Obligation
-          </div>
-          <p>
-            Energy infrastructures built today lock in carbon emissions for <strong>decades or longer</strong>. A natural gas power plant commissioned in 2026 will typically operate for 30 to 40 years, releasing greenhouse gases throughout its operational life. Choosing slow transitions is not a neutral act of delay , it is an active decision to <strong>force future generations to inherit a broken climate baseline they had no hand in building</strong> and no vote in choosing. The moral asymmetry is absolute: the present generation bears the cost of transition, while future generations bear the full consequence of inaction.
-          </p>
-        </div>
 
       </div>
     </section>
@@ -1027,7 +979,7 @@
         <div class="section-label label-env">Part II</div>
         <h2 class="section-title" id="env-heading">Environment: Climatic Drift &amp; Ecological Disruption</h2>
         <p class="section-subtitle">
-          Mapping the accelerating physics of global warming , how thermal energy accumulates permanently in the biosphere, and why the warming we observe today is unlike any period in the modern human record.
+          How thermal energy accumulates permanently in the biosphere , and why today's warming is unlike anything in the modern human record.
         </p>
 
         <!-- Two-column explainer -->
@@ -1035,23 +987,23 @@
           <div class="prose">
             <h3>Earth's Fundamental Energy Imbalance</h3>
             <p>
-              The climate system is governed by a basic physical ledger: energy arriving from the sun must equal energy radiating back into space for the planet's temperature to remain stable. Accumulated greenhouse gases , principally carbon dioxide (CO&#8322;), methane (CH&#8324;), and nitrous oxide (N&#8322;O) , <strong>block outward-bound thermal (infrared) radiation</strong>, preventing it from escaping to space. The result is a planetary energy imbalance: more energy enters the Earth system than leaves it, and that surplus accumulates in the oceans, atmosphere, ice sheets, and land surface.
+              Greenhouse gases , CO&#8322;, CH&#8324;, N&#8322;O , <strong>block outbound thermal radiation</strong>, creating a planetary energy imbalance: more energy enters than leaves. The surplus accumulates in oceans, atmosphere, and ice sheets.
             </p>
             <p>
-              Carbon dioxide , the dominant driver of anthropogenic warming , <strong>persists in the atmosphere for centuries to millennia</strong>. A CO&#8322; molecule emitted by a coal-fired power station today will still be trapping heat in the year 2300. This irreversibility is the physical foundation of the moral argument: we are not merely creating problems for the next election cycle, but encoding constraints into the climate system that will shape human civilization for hundreds of generations.
+              CO&#8322; <strong>persists for centuries to millennia</strong>. A molecule emitted today still traps heat in 2300 , encoding constraints into the climate system that will shape civilization for hundreds of generations.
             </p>
           </div>
           <div>
             <div class="callout callout-green">
               <div class="callout-label">NOAA / United Nations , Key Physical Mechanism</div>
               <p>
-                The greenhouse effect is a natural process; without it, Earth's average surface temperature would be approximately <strong>&#8722;18&#176;C</strong> rather than the current +15&#176;C. The crisis is not its existence but its intensification: human activities have elevated atmospheric CO&#8322; from a pre-industrial baseline of approximately <strong>280 ppm</strong> to over <strong>420 ppm</strong> as of 2024 , a concentration not seen on Earth for at least <strong>3 million years</strong>.
+                Without the greenhouse effect Earth would be &#8722;18&#176;C. The crisis is its intensification: CO&#8322; has risen from <strong>280 ppm</strong> pre-industrial to <strong>&gt;420 ppm</strong> in 2024 , a level unseen for <strong>3 million years</strong>.
               </p>
             </div>
             <div class="callout callout-blue" style="margin-top:1.25rem;">
               <div class="callout-label">Physical Persistence , The Century-Scale Lock-In</div>
               <p>
-                Even if humanity achieved <strong>net-zero emissions tomorrow</strong>, the CO&#8322; already present in the atmosphere would continue warming the planet for centuries due to the slow response time of the deep ocean. We are living in the consequences of our grandparents' industrial choices , and our grandchildren will live in the consequences of ours.
+                Even at <strong>net-zero tomorrow</strong>, existing CO&#8322; would keep warming the planet for centuries. We live in our grandparents' emissions , our grandchildren will live in ours.
               </p>
             </div>
           </div>
@@ -1062,7 +1014,7 @@
         <!-- Acceleration Table -->
         <p class="sub-heading">The Acceleration of Global Surface Warming</p>
         <p class="sub-desc">
-          The following multi-variable table contrasts historical warming baselines against modern acceleration indicators, synthesizing data from NOAA's global land-ocean temperature dataset. All anomaly values are measured relative to the 20th-century average.
+          NOAA land-ocean data contrasting historical baselines with modern acceleration. All anomalies relative to the 20th-century average.
         </p>
 
         <div class="table-wrapper">
@@ -1132,29 +1084,13 @@
         <div class="prose" style="margin-top:1.75rem;">
           <h3>From Temperature Rise to Ecological Cascade</h3>
           <p>
-            Global mean temperature rise is not an isolated metric , it is the input variable that drives cascading disruptions across every major Earth system. <strong>Rising ocean temperatures</strong> accelerate the bleaching and death of coral reef ecosystems, which support an estimated 25% of all marine species. <strong>Melting polar ice sheets</strong> contribute to sea-level rise while disrupting thermohaline circulation patterns that regulate temperature and precipitation across entire continents.
+            Temperature rise drives cascading disruptions across every Earth system. <strong>Rising ocean temperatures</strong> bleach coral reefs supporting 25% of marine species; <strong>melting ice sheets</strong> raise sea levels and disrupt circulation patterns regulating continental climates.
           </p>
           <p>
-            On land, accelerating warming is <strong>shifting species ranges poleward and to higher elevations</strong> faster than many organisms can adapt. Phenological mismatches , the desynchronization of plant flowering and insect pollination cycles , threaten agricultural systems that depend on millennia of evolved ecological timing. Permafrost thaw in the Arctic releases additional methane and CO&#8322;, creating a dangerous feedback loop that amplifies warming independent of further human emissions.
-          </p>
-          <p>
-            Extreme weather events , including <strong>marine heatwaves, atmospheric rivers, compound drought-heat events, and super-typhoons</strong> , are becoming more frequent and more intense as the atmosphere holds greater energy and moisture. The physical chain from a ton of CO&#8322; emitted today to a flooded coastal city in 2080 is mechanistically traceable and scientifically established.
+            On land, species ranges shift poleward faster than ecosystems adapt. Permafrost thaw releases methane, amplifying warming further. <strong>Marine heatwaves, atmospheric rivers, and super-typhoons</strong> intensify as the atmosphere holds more energy , the chain from today's emissions to tomorrow's flooded cities is scientifically established.
           </p>
         </div>
 
-        <div class="ethics-box">
-          <div class="ethics-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-            Ethical Dimension , Irreversible Planetary Debt
-          </div>
-          <p>
-            Greenhouse gases like carbon dioxide remain active in the atmosphere for <strong>centuries to millennia</strong>. The environmental degradation we inflict today is therefore not a temporary disruption from which future generations can recover , it is an <strong>irreversible planetary debt handed down directly to the unborn</strong>. Unlike financial debt, which can be restructured or forgiven, a CO&#8322;-enriched atmosphere cannot be rapidly recalled. We have no capacity to apologize to future generations for a liveable climate after we have destroyed it.
-          </p>
-        </div>
 
       </div>
     </section>
@@ -1168,7 +1104,7 @@
         <div class="section-label label-pop">Part III</div>
         <h2 class="section-title" id="pop-heading">Population: Vulnerability, Health, &amp; Equity</h2>
         <p class="section-subtitle">
-          Climate impacts do not fall equally on those who cause them. The starkest moral indictment of the current trajectory is the extreme disparity between those who drive emissions and those who suffer their most severe consequences.
+          Climate impacts do not fall on those who cause them. The disparity between who drives emissions and who suffers the consequences is the defining injustice of the crisis.
         </p>
 
         <!-- Key Stats -->
@@ -1200,10 +1136,7 @@
 
         <div class="prose">
           <p>
-            The geopolitical anatomy of climate change reveals one of the most severe examples of distributive injustice in human history. The <strong>top 10 carbon-emitting nations</strong> , principally the world's largest industrialized and rapidly industrializing economies , collectively generate a staggering <strong>68% of all global greenhouse gas emissions</strong>. These same nations also possess the greatest financial, technological, and infrastructural capacity to adapt to climate impacts.
-          </p>
-          <p>
-            At the other end of the spectrum, the nations that have historically contributed the <strong>absolute least</strong> to cumulative global emissions , small island developing states, sub-Saharan African nations, South and Southeast Asian coastal communities , face the most catastrophic and near-term consequences: permanent inundation from sea-level rise, collapse of subsistence agriculture from shifting monsoon patterns, and the loss of freshwater sources from glacial retreat. The cruel inverse relationship between contribution and consequence is a structural feature of how colonial-era industrialization encoded carbon into the global economy.
+            The <strong>top 10 emitting nations</strong> produce <strong>68% of global greenhouse gases</strong> and hold the greatest capacity to adapt. Meanwhile, small island states, sub-Saharan Africa, and South Asian coastal communities , who contributed the least , face permanent inundation, agricultural collapse, and freshwater loss. This inverse relationship between cause and consequence is a structural feature of how industrialization encoded carbon into the global economy.
           </p>
         </div>
 
@@ -1226,7 +1159,7 @@
             <div class="metric-number" style="color:var(--accent-primary);">3.3&#8211;3.6 Billion People</div>
             <h4>Highly Vulnerable Human Populations</h4>
             <p>
-              According to the IPCC Sixth Assessment Report (Working Group II), between <strong>3.3 and 3.6 billion people</strong> currently live in settings that are "highly vulnerable" to climate disruptions , communities with limited adaptive capacity facing high levels of climate exposure. This encompasses populations threatened by sea-level rise, desertification, loss of glacial meltwater, intensifying tropical cyclones, and heat-induced agricultural failure. This is not a future risk , it is a present-tense crisis affecting nearly half the global population.
+              The IPCC AR6 finds <strong>3.3–3.6 billion people</strong> in "highly vulnerable" settings , exposed to sea-level rise, desertification, glacial meltwater loss, and crop failure. This is a present-tense crisis affecting nearly half the global population.
             </p>
           </div>
         </div>
@@ -1242,7 +1175,7 @@
             <div class="metric-number" style="color:var(--accent-primary);">15&#215; Higher Mortality Rate</div>
             <h4>The Mortality Disparity: Vulnerability vs. Resilience</h4>
             <p>
-              The IPCC's Sixth Assessment Report documents that people living in highly vulnerable, developing nations , who historically contributed the absolute least to global cumulative emissions , face a <strong>15-times higher mortality rate</strong> from climate-induced floods, droughts, and severe storms compared to populations in climate-resilient, high-income nations. This 15-fold disparity is not explained by geographic bad luck; it is a product of accumulated deficits in infrastructure, early-warning systems, healthcare, and financial safety nets , themselves a legacy of the unequal global development model powered by the very carbon emissions that now threaten those left furthest behind.
+              Developing nations , least responsible for cumulative emissions , face a <strong>15× higher mortality rate</strong> from floods, droughts, and storms. The disparity stems from infrastructure deficits that are themselves a legacy of the carbon-powered development model now threatening them most.
             </p>
           </div>
         </div>
@@ -1258,7 +1191,7 @@
             <div class="metric-number" style="color:var(--accent-primary);">Escalating Disease Risk</div>
             <h4>Eco-Socio Cascades: Vector-Borne and Zoonotic Disease</h4>
             <p>
-              Rising global temperatures and accelerating habitat loss are systematically <strong>breaking down the ecological boundaries</strong> that historically constrained the geographic range of disease vectors. As tropical climate zones expand poleward, diseases such as malaria, dengue fever, chikungunya, Zika, and Lyme disease are establishing themselves in previously untouched human populations lacking any prior immunity or healthcare infrastructure for these conditions. Simultaneously, the destruction of natural habitats <strong>increases contact between wildlife reservoirs and human populations</strong>, creating ideal conditions for zoonotic pathogen spillover events , the same mechanism underlying recent pandemic outbreaks. Climate change does not merely increase existing health risks; it actively generates new ones.
+              Warming <strong>breaks down ecological boundaries</strong> that constrained disease vectors. Malaria, dengue, and Lyme disease expand into populations with no prior immunity. Habitat destruction <strong>increases wildlife-human contact</strong>, enabling zoonotic spillovers , the same mechanism behind recent pandemics. Climate change doesn't just worsen existing risks; it creates new ones.
             </p>
           </div>
         </div>
@@ -1275,7 +1208,7 @@
             <div class="metric-number" style="color:var(--accent-primary);">Zero Representation</div>
             <h4>The Unborn: A Fully Disenfranchised Constituency</h4>
             <p>
-              Future generations , those who will live with the full thermal consequences of decisions made in 2026 , have <strong>no vote, no legal standing, no lobbyist, and no seat at any table</strong> where climate policy is decided. They cannot object to our emissions, cannot organize political resistance, and cannot sue for the rights we are preemptively stripping from them. This represents a unique form of exploitation: the expropriation of a resource , a stable climate , from those who cannot yet defend their claim to it. Democratic systems, designed to represent the living, have no intrinsic mechanism for this representation gap. Filling it requires the present generation to voluntarily assume the moral obligation that institutional structures cannot enforce.
+              Future generations have <strong>no vote, no legal standing, and no seat</strong> where climate policy is decided. They cannot object, organize, or sue. Democratic systems have no mechanism for this gap , filling it requires the present generation to voluntarily assume an obligation no institution can enforce.
             </p>
           </div>
         </div>
@@ -1285,7 +1218,7 @@
         <!-- Comparative Table -->
         <p class="sub-heading">The Asymmetry of Cause and Consequence</p>
         <p class="sub-desc">
-          The table below illustrates the fundamental inequity between nations and communities most responsible for greenhouse gas accumulation and those bearing the most severe consequences.
+          Emissions responsibility versus impact exposure across key groups.
         </p>
 
         <div class="table-wrapper">
@@ -1336,19 +1269,6 @@
           Sources: IPCC (2022), Sixth Assessment Report WGII; United Nations Climate Action (n.d.); Government of Canada (2024).
         </p>
 
-        <div class="ethics-box">
-          <div class="ethics-label">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
-              <line x1="12" y1="16" x2="12.01" y2="16"/>
-            </svg>
-            Ethical Dimension , Distributive Justice and Universal Human Rights
-          </div>
-          <p>
-            Future generations are <strong>entirely powerless</strong>: they cannot vote, lobby, litigate, or protect themselves from our choices. Exploiting this absence of representation to preserve short-term industrial comfort violates the core principles of both <strong>universal human rights</strong> , which are by definition not time-limited to the presently living , and <strong>distributive justice</strong>, which demands that burdens and benefits be allocated according to capacity and contribution, not arbitrary temporal position. We do not grant ourselves the right to poison a river simply because those who will drink from it downstream have not yet been born. The same principle, writ planetary, applies to the atmosphere.
-          </p>
-        </div>
 
       </div>
     </section>
