@@ -14,24 +14,24 @@
   <style>
     /* ─── Design Tokens ─────────────────────────────────────────────────── */
     :root {
-      --bg-base:        #0b0f1a;
-      --bg-surface:     #111827;
-      --bg-raised:      #1a2236;
-      --bg-card:        #1e2d45;
+      --bg-base:        #ffffff;
+      --bg-surface:     #f5f5f5;
+      --bg-raised:      #eeeeee;
+      --bg-card:        #e0e0e0;
 
-      --accent-primary: #3b82f6;
-      --accent-hot:     #3b82f6;
-      --accent-warm:    #3b82f6;
-      --accent-cool:    #3b82f6;
-      --accent-gold:    #3b82f6;
-      --accent-violet:  #3b82f6;
+      --accent-primary: #000000;
+      --accent-hot:     #000000;
+      --accent-warm:    #000000;
+      --accent-cool:    #000000;
+      --accent-gold:    #000000;
+      --accent-violet:  #000000;
 
-      --text-primary:   #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted:     #64748b;
+      --text-primary:   #111111;
+      --text-secondary: #444444;
+      --text-muted:     #888888;
 
-      --border-subtle:  rgba(255,255,255,0.07);
-      --border-light:   rgba(255,255,255,0.13);
+      --border-subtle:  rgba(0,0,0,0.08);
+      --border-light:   rgba(0,0,0,0.15);
 
       --radius-sm:  6px;
       --radius-md:  10px;
@@ -74,7 +74,7 @@
       text-decoration: underline;
       text-underline-offset: 3px;
     }
-    a:hover { color: #93c5fd; }
+    a:hover { color: #555555; }
     a:focus-visible {
       outline: 2px solid var(--accent-primary);
       outline-offset: 3px;
@@ -87,7 +87,7 @@
       top: -100%;
       left: 1rem;
       background: var(--accent-primary);
-      color: #fff;
+      color: #ffffff;
       padding: 0.5rem 1rem;
       border-radius: var(--radius-sm);
       font-weight: 700;
@@ -102,7 +102,7 @@
       top: 0;
       z-index: 100;
       height: var(--nav-height);
-      background: rgba(11, 15, 26, 0.93);
+      background: rgba(255,255,255,0.97);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border-subtle);
@@ -152,7 +152,7 @@
     }
     .nav-links a:hover {
       color: var(--text-primary);
-      background-color: rgba(255,255,255,0.06);
+      background-color: rgba(0,0,0,0.06);
     }
     .nav-links a:focus-visible {
       outline: 2px solid var(--accent-primary);
@@ -201,9 +201,7 @@
 
     /* ─── Hero ───────────────────────────────────────────────────────────── */
     .hero {
-      background:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59,130,246,0.18) 0%, transparent 70%),
-        var(--bg-base);
+      background: var(--bg-base);
       padding: 6rem 0 5rem;
       text-align: center;
       border-bottom: 1px solid var(--border-subtle);
@@ -216,8 +214,8 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent-primary);
-      background: rgba(59,130,246,0.12);
-      border: 1px solid rgba(59,130,246,0.3);
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.2);
       padding: 0.35rem 1rem;
       border-radius: 100px;
       margin-bottom: 1.75rem;
@@ -235,7 +233,7 @@
 
     .hero h1 em {
       font-style: italic;
-      color: #93c5fd;
+      color: #333333;
     }
 
     .hero-subtitle {
@@ -276,7 +274,7 @@
 
     .hero-thesis strong {
       font-style: normal;
-      color: #93c5fd;
+      color: #333333;
     }
 
     .nav-pills {
@@ -301,11 +299,11 @@
       transition: color 0.18s, border-color 0.18s, background-color 0.18s;
       cursor: pointer;
     }
-    .pill:hover        { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
-    .pill.power:hover  { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
-    .pill.env:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
-    .pill.pop:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
-    .pill.refs:hover   { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(59,130,246,0.1); }
+    .pill:hover        { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(0,0,0,0.06); }
+    .pill.power:hover  { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(0,0,0,0.06); }
+    .pill.env:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(0,0,0,0.06); }
+    .pill.pop:hover    { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(0,0,0,0.06); }
+    .pill.refs:hover   { color: var(--text-primary); border-color: var(--accent-primary); background: rgba(0,0,0,0.06); }
 
     /* ─── Section Headers ────────────────────────────────────────────────── */
     .section-label {
@@ -321,9 +319,9 @@
       margin-bottom: 1.25rem;
     }
 
-    .label-power { color: var(--accent-primary); background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); }
-    .label-env   { color: var(--accent-primary); background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); }
-    .label-pop   { color: var(--accent-primary); background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); }
+    .label-power { color: var(--accent-primary); background: rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.15); }
+    .label-env   { color: var(--accent-primary); background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); }
+    .label-pop   { color: var(--accent-primary); background: rgba(0,0,0,0.07); border: 1px solid rgba(0,0,0,0.15); }
 
     .section-title {
       font-family: var(--font-heading);
@@ -440,10 +438,10 @@
       border-left-style: solid;
     }
 
-    .callout-blue   { background: rgba(59,130,246,0.08);  border-left-color: var(--accent-primary); }
-    .callout-green  { background: rgba(59,130,246,0.05);  border-left-color: var(--accent-primary); }
-    .callout-red    { background: rgba(59,130,246,0.05);  border-left-color: var(--accent-primary); }
-    .callout-orange { background: rgba(59,130,246,0.08);  border-left-color: var(--accent-primary); }
+    .callout-blue   { background: rgba(0,0,0,0.05);  border-left-color: var(--accent-primary); }
+    .callout-green  { background: rgba(0,0,0,0.03);  border-left-color: var(--accent-primary); }
+    .callout-red    { background: rgba(0,0,0,0.03);  border-left-color: var(--accent-primary); }
+    .callout-orange { background: rgba(0,0,0,0.05);  border-left-color: var(--accent-primary); }
 
     .callout-label {
       font-size: 0.67rem;
@@ -602,9 +600,9 @@
 
     .contrast-card strong { color: var(--text-primary); }
 
-    .cc-red  { background: rgba(59,130,246,0.06);  }
+    .cc-red  { background: rgba(0,0,0,0.04);  }
     .cc-red  .cc-label { color: var(--accent-primary); }
-    .cc-grn  { background: rgba(59,130,246,0.04); }
+    .cc-grn  { background: rgba(0,0,0,0.02); }
     .cc-grn  .cc-label { color: var(--accent-primary); }
 
     /* ─── Metric Cards ───────────────────────────────────────────────────── */
@@ -629,10 +627,10 @@
       justify-content: center;
     }
 
-    .icon-red    { background: rgba(59,130,246,0.15);  }
-    .icon-orange { background: rgba(59,130,246,0.15);  }
-    .icon-blue   { background: rgba(59,130,246,0.15);  }
-    .icon-green  { background: rgba(59,130,246,0.15);  }
+    .icon-red    { background: rgba(0,0,0,0.08);  }
+    .icon-orange { background: rgba(0,0,0,0.08);  }
+    .icon-blue   { background: rgba(0,0,0,0.08);  }
+    .icon-green  { background: rgba(0,0,0,0.08);  }
 
     .metric-body { flex: 1; }
 
@@ -663,8 +661,8 @@
 
     /* ─── Ethics Box ─────────────────────────────────────────────────────── */
     .ethics-box {
-      background: linear-gradient(135deg, rgba(59,130,246,0.06) 0%, rgba(139,92,246,0.06) 100%);
-      border: 1px solid rgba(139,92,246,0.25);
+      background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.03) 100%);
+      border: 1px solid rgba(0,0,0,0.15);
       border-radius: var(--radius-lg);
       padding: 1.75rem 2rem;
       margin-top: 2.5rem;
@@ -690,7 +688,7 @@
       line-height: 1.7;
     }
 
-    .ethics-box strong { font-style: normal; color: #c4b5fd; }
+    .ethics-box strong { font-style: normal; color: #111111; }
 
     /* ─── Big Quote ──────────────────────────────────────────────────────── */
     .big-quote {
@@ -758,7 +756,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      background: rgba(59,130,246,0.15);
+      background: rgba(0,0,0,0.08);
       color: var(--accent-primary);
       font-size: 0.76rem;
       font-weight: 700;
